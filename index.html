@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Michael's blog</title>
+		<link rel="stylesheet" href="/index.css" />
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script
+			src="https://code.jquery.com/jquery-3.7.1.min.js"
+			integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+			crossorigin="anonymous"
+		></script>
+	</head>
+	<body class="bg-zinc-950">
+		<div
+			id="loadscreen"
+			class="w-screen h-screen bg-zinc-950 flex flex-col justify-center items-center fixed z-10"
+		>
+			<img class="w-28" src="/assets/img/cat_rotate.gif" />
+			<span class="text-4xl mt-5">Cargando blog...</span>
+			<span class="text-base text-sky-400/50 mt-2"
+				>Creado por:
+				<span class="text-sky-300 font-bold underline decoration-2 decoration-sky-300"
+					>Michael López</span
+				></span
+			>
+		</div>
+		<header class="w-screen fixed">
+			<div class="bg-sky-950 py-5 text-center">
+				<h1 class="text-5xl">Michael's blog</h1>
+			</div>
+			<nav class="bg-sky-900">
+				<ul class="flex flex-wrap list-none text-xl">
+					<li
+						id="p1"
+						class="bg-sky-700 flex-1 text-center py-2 hover:cursor-pointer hover:bg-sky-800"
+					>
+						Período 1
+					</li>
+					<li
+						id="p2"
+						class="flex-1 text-center py-2 hover:cursor-pointer hover:bg-sky-800"
+					>
+						Período 2
+					</li>
+					<li
+						id="p3"
+						class="flex-1 text-center py-2 hover:cursor-pointer hover:bg-sky-800"
+					>
+						Período 3
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<div
+			id="visualizer"
+			class="w-screen h-full pt-40 text-center flex items-center justify-center flex-col"
+		>
+			<span class="flex flex-col items-center">
+				<img class="size-20 rounded-lg mb-5" src="/assets/img/cat_cry.jpg" />
+				<span id="warning-no-pdf" class="text-lg"
+					>¡No hay talleres del período 1 hechos! :(</span
+				>
+			</span>
+
+            <span>
+                <div class="bg-zinc-900 size-32 rounded-lg flex items-center justify-center flex-col">
+                    <img class="size-16" />
+                    <h1>Nombre</h1>
+                </div>
+            </span>
+		</div>
+
+		<script>
+			const loadScreen = $("#loadscreen");
+			const visualizer = $("#visualizer");
+			const warningNoPDF = $("#warning-no-pdf");
+
+			$(document).ready(function () {
+				setTimeout(() => {
+					loadScreen.fadeOut("slow", function () {
+						loadScreen.addClass("hidden");
+					});
+				}, 5000);
+
+				let lastPeriodoSelected = 1;
+
+				for (let i = 1; i < 4; i++) {
+					const btn = $(`#p${i}`);
+
+					btn.click(function () {
+						btn.addClass("bg-sky-700");
+						$(`#p${lastPeriodoSelected}`).removeClass("bg-sky-700");
+						lastPeriodoSelected = i;
+
+						warningNoPDF.text(`¡No hay talleres del período ${i} hechos! :(`);
+					});
+				}
+			});
+		</script>
+	</body>
+</html>

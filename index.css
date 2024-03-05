@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+*,
+::after,
+::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: content-box;
+}
+
+body {
+    color: #ffffff;
+    height: 100vh;
+    font-family: 'Josefin Sans', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.load-screen {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    font-size: 3rem;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.load-screen > img {
+    width: 10rem;
+    margin: 0 0 2rem 0;
+}
